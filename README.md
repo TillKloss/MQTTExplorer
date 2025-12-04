@@ -1,20 +1,17 @@
 # MQTT Explorer (WinForms)
 
-Ein einfacher, selbstgebauter **MQTT Explorer in C# (WinForms)** zum:
-- Verwalten von Verbindungen
-- Abonnieren von Topics
-- Live-Anzeigen von Payloads
-- Speichern von Verbindungen in einer JSON-Datei
-
-Projekt entstand als Lernprojekt.
-
----
-
-## Technologien
 ![C#](https://img.shields.io/badge/C%23-.NET-blue?style=for-the-badge)
 ![WinForms](https://img.shields.io/badge/WinForms-Desktop-lightgrey?style=for-the-badge)
 ![MQTT](https://img.shields.io/badge/MQTT-Protocol-orange?style=for-the-badge)
 ![JSON](https://img.shields.io/badge/JSON-Data-black?style=for-the-badge)
+
+Ein einfacher, selbstgebauter **MQTT Explorer in C# (WinForms)** zum:
+- Verwalten von Verbindungen
+- Abonnieren von Topics
+- Live-Anzeigen von Payloads*
+- Speichern von Verbindungen in einer JSON-Datei
+
+Projekt entstand als Lernprojekt.
 
 ---
 
@@ -22,7 +19,7 @@ Projekt entstand als Lernprojekt.
 
 - Mehrere MQTT-Verbindungen speichern
 - Dynamisches Abonnieren & Entfernen von Topics
-- Live-Payload-Anzeige in einer ListBox
+- Live-Payload-Anzeige in einer ListBox*
 - Automatisches Speichern der Verbindungen in `connections.json`
 - Asynchroner MQTT-Connect
 - Saubere Trennung von UI, Logik und MQTT
@@ -50,3 +47,7 @@ JSON-Beispiel: <br>
   }
 ]
 ```
+
+---
+
+*Klick auf ListBox-Entry wird in Zukunft kompletten PayLoad in einem eigenen Fenster anzeigen (raw, JSON, XML support)
