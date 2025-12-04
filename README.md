@@ -29,7 +29,7 @@ Projekt entstand als Lernprojekt.
 ## Installation
 
 1. Repository klonen:
-   ```git clone https://github.com/DEIN-NAME/DEIN-REPO.git```
+   ```git clone https://github.com/TillKloss/MQTTExplorer```
 2. Projekt in Visual Studio öffnen.
 3. NuGet-Paket installieren:
    MQTTnet
