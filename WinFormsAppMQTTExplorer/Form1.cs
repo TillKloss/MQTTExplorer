@@ -118,5 +118,10 @@ namespace WinFormsAppMQTTExplorer
             }
             MessageBox.Show("Kein Topic gewählt!");
         }
+
+        private void buttonClearPayloads_Click(object sender, EventArgs e)
+        {
+            listBoxPayloads.Items.Clear();
+        }
     }
 }

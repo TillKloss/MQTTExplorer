@@ -289,6 +289,7 @@
             buttonClearPayloads.TabIndex = 1;
             buttonClearPayloads.Text = "Payloads leeren";
             buttonClearPayloads.UseVisualStyleBackColor = true;
+            buttonClearPayloads.Click += buttonClearPayloads_Click;
             // 
             // listBoxPayloads
             // 
