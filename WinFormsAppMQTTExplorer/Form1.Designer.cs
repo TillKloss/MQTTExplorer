@@ -49,9 +49,9 @@
             textBoxTopicName = new TextBox();
             label5 = new Label();
             groupBoxPayloads = new GroupBox();
-            listBoxPayloads = new ListBox();
-            buttonClearPayloads = new Button();
             label7 = new Label();
+            buttonClearPayloads = new Button();
+            listBoxPayloads = new ListBox();
             groupBoxConnect.SuspendLayout();
             groupBoxTopics.SuspendLayout();
             groupBoxPayloads.SuspendLayout();
@@ -66,6 +66,7 @@
             buttonDisconnect.TabIndex = 7;
             buttonDisconnect.Text = "Disconnect";
             buttonDisconnect.UseVisualStyleBackColor = true;
+            buttonDisconnect.Click += buttonDisconnect_Click;
             // 
             // buttonConnect
             // 
@@ -75,6 +76,7 @@
             buttonConnect.TabIndex = 6;
             buttonConnect.Text = "Connect";
             buttonConnect.UseVisualStyleBackColor = true;
+            buttonConnect.Click += buttonConnect_Click;
             // 
             // label1
             // 
@@ -149,6 +151,7 @@
             buttonAddConn.TabIndex = 4;
             buttonAddConn.Text = "Verbindung hinzufügen";
             buttonAddConn.UseVisualStyleBackColor = true;
+            buttonAddConn.Click += buttonAddConn_Click;
             // 
             // label4
             // 
@@ -219,11 +222,11 @@
             buttonRemoveTopic.TabIndex = 15;
             buttonRemoveTopic.Text = "Topic entfernen";
             buttonRemoveTopic.UseVisualStyleBackColor = true;
+            buttonRemoveTopic.Click += buttonRemoveTopic_Click;
             // 
             // listBoxTopics
             // 
             listBoxTopics.FormattingEnabled = true;
-            listBoxTopics.Items.AddRange(new object[] { "default" });
             listBoxTopics.Location = new Point(27, 291);
             listBoxTopics.Name = "listBoxTopics";
             listBoxTopics.Size = new Size(416, 548);
@@ -237,6 +240,7 @@
             buttonAddTopic.TabIndex = 13;
             buttonAddTopic.Text = "Topic hinzufügen";
             buttonAddTopic.UseVisualStyleBackColor = true;
+            buttonAddTopic.Click += buttonAddTopic_Click;
             // 
             // textBoxTopicName
             // 
@@ -267,13 +271,15 @@
             groupBoxPayloads.TabStop = false;
             groupBoxPayloads.Text = "MQTT Payloads";
             // 
-            // listBoxPayloads
+            // label7
             // 
-            listBoxPayloads.FormattingEnabled = true;
-            listBoxPayloads.Location = new Point(27, 101);
-            listBoxPayloads.Name = "listBoxPayloads";
-            listBoxPayloads.Size = new Size(664, 740);
-            listBoxPayloads.TabIndex = 0;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(21, 66);
+            label7.Name = "label7";
+            label7.Size = new Size(115, 32);
+            label7.TabIndex = 17;
+            label7.Text = "Payloads";
             // 
             // buttonClearPayloads
             // 
@@ -284,15 +290,13 @@
             buttonClearPayloads.Text = "Payloads leeren";
             buttonClearPayloads.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // listBoxPayloads
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(21, 66);
-            label7.Name = "label7";
-            label7.Size = new Size(115, 32);
-            label7.TabIndex = 17;
-            label7.Text = "Payloads";
+            listBoxPayloads.FormattingEnabled = true;
+            listBoxPayloads.Location = new Point(27, 101);
+            listBoxPayloads.Name = "listBoxPayloads";
+            listBoxPayloads.Size = new Size(664, 740);
+            listBoxPayloads.TabIndex = 0;
             // 
             // Form1
             // 

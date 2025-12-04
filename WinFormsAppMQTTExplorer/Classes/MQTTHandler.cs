@@ -47,6 +47,7 @@ namespace WinFormsAppMQTTExplorer.Classes
             {
                 await client.SubscribeAsync(topic.Name);
             }
+            MessageBox.Show("Verbunden");
         }
 
         public async Task DisconnectAsync()

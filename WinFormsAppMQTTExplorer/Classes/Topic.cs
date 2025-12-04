@@ -12,7 +12,7 @@ namespace WinFormsAppMQTTExplorer.Classes
 
         public Topic(string name)
         {
-
+            this.name = name;
         }
 
         public string Name { get => name; set => name = value; }
