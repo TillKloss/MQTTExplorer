@@ -47,3 +47,12 @@ JSON-Beispiel: <br>
   }
 ]
 ```
+---
+
+## Screenshots
+
+### Hauptansicht
+![Hauptansicht](WinFormsAppMQTTExplorer/screenshots/MQTT_Explorer_Form1_UI.PNG)
+
+### Payload-Viewer
+![Payload-Viewer](WinFormsAppMQTTExplorer/screenshots/MQTT_Explorer_Payload_UI.PNG)
