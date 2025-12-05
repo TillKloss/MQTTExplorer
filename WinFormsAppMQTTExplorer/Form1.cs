@@ -6,6 +6,8 @@ namespace WinFormsAppMQTTExplorer
     public partial class Form1 : Form
     {
         Handler handler;
+        private bool isInitializing = true;
+
 
         public Form1()
         {
@@ -17,6 +19,12 @@ namespace WinFormsAppMQTTExplorer
 
             listBoxTopics.DataSource = handler.Topics;
             listBoxConns.DataSource = handler.Connections;
+            listBoxConns.SelectedIndex = -1;
+
+            buttonDisconnect.Enabled = false;
+            buttonConnect.Enabled = true;
+
+            isInitializing = false;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -41,6 +49,17 @@ namespace WinFormsAppMQTTExplorer
 
             listBoxPayloads.Items.Add(payload);
             listBoxPayloads.TopIndex = listBoxPayloads.Items.Count - 1;
+        }
+
+        private void clearConnectionTextBox()
+        {
+            textBoxBroker.Text = string.Empty;
+            textBoxConnName.Text = string.Empty;
+        }
+
+        private void clearTopicTextBox()
+        {
+            textBoxTopicName.Text = string.Empty;
         }
 
         //AddConnection - sicher
@@ -72,23 +91,69 @@ namespace WinFormsAppMQTTExplorer
                 );
 
             handler.AddConnection(connection);
+            clearConnectionTextBox();
         }
 
-        //Connection - sicher
-        private void buttonConnect_Click(object sender, EventArgs e)
+        //RemoveConnection - sicher
+        private void buttonRemoveConn_Click(object sender, EventArgs e)
         {
             if (listBoxConns.SelectedItem is Connection connection)
             {
-                handler.Connect(connection);
+                handler.RemoveConnection(connection);
                 return;
             }
-            MessageBox.Show("Keine Verbindung gewählt!");
+            MessageBox.Show("Keine Verbindung ausgewählt!");
+        }
+
+        //Connection - sicher
+        private async void buttonConnect_Click(object sender, EventArgs e)
+        {
+            if (listBoxConns.SelectedItem is not Connection connection)
+            {
+                MessageBox.Show("Keine Verbindung gewählt!");
+                return;
+            }
+
+            buttonConnect.Enabled = false;
+            buttonDisconnect.Enabled = false;
+
+            try
+            {
+                await handler.Connect(connection);
+                buttonDisconnect.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verbindung nicht möglich.");
+                buttonConnect.Enabled = true;
+            }
+            
+        }
+
+        private void listBoxConns_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isInitializing)
+            {
+                return;
+            }
+
+            if (listBoxConns.SelectedItem is Connection connection)
+            {
+                textBoxConnName.Text = connection.Name;
+                textBoxBroker.Text = connection.Broker;
+                textBoxPort.Text = connection.Port.ToString();
+            }
         }
 
         //Disconnect - sicher
-        private void buttonDisconnect_Click(object sender, EventArgs e)
+        private async void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            handler.Disconnect();
+            buttonConnect.Enabled = false;
+            buttonDisconnect.Enabled = false;
+
+            await handler.Disconnect();
+
+            buttonConnect.Enabled = true;
         }
 
         //AddTopic - sicher
@@ -106,6 +171,7 @@ namespace WinFormsAppMQTTExplorer
                 );
 
             handler.AddTopic(topic);
+            clearTopicTextBox();
         }
 
         //RemoveTopic - sicher
@@ -122,6 +188,15 @@ namespace WinFormsAppMQTTExplorer
         private void buttonClearPayloads_Click(object sender, EventArgs e)
         {
             listBoxPayloads.Items.Clear();
+        }
+
+        private void listBoxPayloads_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxPayloads.SelectedItem is Payload payload)
+            {
+                var viewer = new PayloadViewerForm(payload);
+                viewer.Show();
+            }
         }
     }
 }

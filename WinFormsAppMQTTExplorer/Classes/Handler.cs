@@ -32,13 +32,18 @@ namespace WinFormsAppMQTTExplorer.Classes
             connections.Add(connection);
             JSONHandler.SaveConnections(connections);
         }
+        public void RemoveConnection(Connection connection)
+        {
+            connections.Remove(connection);
+            JSONHandler.SaveConnections(connections);
+        }
         public async Task Connect(Connection connection)
         {
-            mqttHandler.ConnectAsync(connection, topics);
+            await mqttHandler.ConnectAsync(connection, topics);
         }
         public async Task Disconnect()
         {
-            mqttHandler.DisconnectAsync();
+            await mqttHandler.DisconnectAsync();
         }
         public async Task AddTopic(Topic topic)
         {

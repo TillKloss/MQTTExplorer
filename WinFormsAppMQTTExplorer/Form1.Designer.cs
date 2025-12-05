@@ -36,6 +36,7 @@
             textBoxConnName = new TextBox();
             label2 = new Label();
             groupBoxConnect = new GroupBox();
+            buttonRemoveConn = new Button();
             buttonAddConn = new Button();
             label4 = new Label();
             listBoxConns = new ListBox();
@@ -123,6 +124,7 @@
             // 
             // groupBoxConnect
             // 
+            groupBoxConnect.Controls.Add(buttonRemoveConn);
             groupBoxConnect.Controls.Add(buttonAddConn);
             groupBoxConnect.Controls.Add(label4);
             groupBoxConnect.Controls.Add(listBoxConns);
@@ -143,11 +145,21 @@
             groupBoxConnect.TabStop = false;
             groupBoxConnect.Text = "Verbindung aufbauen";
             // 
+            // buttonRemoveConn
+            // 
+            buttonRemoveConn.Location = new Point(257, 363);
+            buttonRemoveConn.Name = "buttonRemoveConn";
+            buttonRemoveConn.Size = new Size(186, 72);
+            buttonRemoveConn.TabIndex = 11;
+            buttonRemoveConn.Text = "Verbindung entfernen";
+            buttonRemoveConn.UseVisualStyleBackColor = true;
+            buttonRemoveConn.Click += buttonRemoveConn_Click;
+            // 
             // buttonAddConn
             // 
             buttonAddConn.Location = new Point(27, 363);
             buttonAddConn.Name = "buttonAddConn";
-            buttonAddConn.Size = new Size(411, 72);
+            buttonAddConn.Size = new Size(186, 72);
             buttonAddConn.TabIndex = 4;
             buttonAddConn.Text = "Verbindung hinzufügen";
             buttonAddConn.UseVisualStyleBackColor = true;
@@ -170,6 +182,7 @@
             listBoxConns.Name = "listBoxConns";
             listBoxConns.Size = new Size(416, 260);
             listBoxConns.TabIndex = 5;
+            listBoxConns.SelectedIndexChanged += listBoxConns_SelectedIndexChanged;
             // 
             // textBoxPort
             // 
@@ -298,6 +311,7 @@
             listBoxPayloads.Name = "listBoxPayloads";
             listBoxPayloads.Size = new Size(664, 740);
             listBoxPayloads.TabIndex = 0;
+            listBoxPayloads.DoubleClick += listBoxPayloads_DoubleClick;
             // 
             // Form1
             // 
@@ -344,5 +358,6 @@
         private Label label7;
         private Button buttonClearPayloads;
         private ListBox listBoxPayloads;
+        private Button buttonRemoveConn;
     }
 }

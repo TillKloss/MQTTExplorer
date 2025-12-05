@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsAppMQTTExplorer.Classes
 {
-    internal class Payload
+    public class Payload
     {
         private Topic topic;
         private DateTime timestamp;

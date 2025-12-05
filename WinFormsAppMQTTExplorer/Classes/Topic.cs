@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsAppMQTTExplorer.Classes
 {
-    internal class Topic
+    public class Topic
     {
         private string name;
 
