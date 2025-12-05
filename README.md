@@ -8,7 +8,7 @@
 Ein einfacher, selbstgebauter **MQTT Explorer in C# (WinForms)** zum:
 - Verwalten von Verbindungen
 - Abonnieren von Topics
-- Live-Anzeigen von Payloads*
+- Live-Anzeigen von Payloads
 - Speichern von Verbindungen in einer JSON-Datei
 
 Projekt entstand als Lernprojekt.
@@ -19,7 +19,7 @@ Projekt entstand als Lernprojekt.
 
 - Mehrere MQTT-Verbindungen speichern
 - Dynamisches Abonnieren & Entfernen von Topics
-- Live-Payload-Anzeige in einer ListBox*
+- Live-Payload-Anzeige in einer ListBox mit JSON-Highlighting
 - Automatisches Speichern der Verbindungen in `connections.json`
 - Asynchroner MQTT-Connect
 - Saubere Trennung von UI, Logik und MQTT
@@ -47,7 +47,3 @@ JSON-Beispiel: <br>
   }
 ]
 ```
-
----
-
-*Klick auf ListBox-Entry wird in Zukunft kompletten PayLoad in einem eigenen Fenster anzeigen (raw, JSON, XML support)
