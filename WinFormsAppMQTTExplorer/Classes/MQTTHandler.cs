@@ -73,5 +73,18 @@ namespace WinFormsAppMQTTExplorer.Classes
                 await client.UnsubscribeAsync(topic.Name);
             }
         }
+
+        public async Task NewPublish(Publish publish)
+        {
+            if (client.IsConnected)
+            {
+                var message = new MqttApplicationMessageBuilder()
+                    .WithTopic(publish.Topic.Name)
+                    .WithPayload(publish.Payload)
+                    .WithQualityOfServiceLevel(publish.Level)
+                    .Build();
+                await client.PublishAsync(message);
+            }
+        }
     }
 }

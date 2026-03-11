@@ -22,6 +22,7 @@ namespace WinFormsAppMQTTExplorer
             listBoxConns.SelectedIndex = -1;
 
             buttonDisconnect.Enabled = false;
+            buttonNewPublish.Enabled = false;
             buttonConnect.Enabled = true;
 
             isInitializing = false;
@@ -116,18 +117,20 @@ namespace WinFormsAppMQTTExplorer
 
             buttonConnect.Enabled = false;
             buttonDisconnect.Enabled = false;
+            buttonNewPublish.Enabled = false;
 
             try
             {
                 await handler.Connect(connection);
                 buttonDisconnect.Enabled = true;
+                buttonNewPublish.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Verbindung nicht möglich.");
                 buttonConnect.Enabled = true;
             }
-            
+
         }
 
         private void listBoxConns_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,6 +153,7 @@ namespace WinFormsAppMQTTExplorer
         {
             buttonConnect.Enabled = false;
             buttonDisconnect.Enabled = false;
+            buttonNewPublish.Enabled = false;
 
             await handler.Disconnect();
 
@@ -197,6 +201,12 @@ namespace WinFormsAppMQTTExplorer
                 var viewer = new PayloadViewerForm(payload);
                 viewer.Show();
             }
+        }
+
+        private void buttonNewPublish_Click(object sender, EventArgs e)
+        {
+            var publisher = new PublishForm(handler);
+            publisher.Show();
         }
     }
 }

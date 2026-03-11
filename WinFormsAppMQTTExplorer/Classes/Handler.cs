@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsAppMQTTExplorer.Classes
 {
-    internal class Handler
+    public class Handler
     {
         private MQTTHandler mqttHandler;
         private BindingList<Topic> topics;
@@ -48,12 +48,17 @@ namespace WinFormsAppMQTTExplorer.Classes
         public async Task AddTopic(Topic topic)
         {
             topics.Add(topic);
-            mqttHandler.SubscribeAsync(topic);
+            await mqttHandler.SubscribeAsync(topic);
         }
         public async Task RemoveTopic(Topic topic)
         {
             topics.Remove(topic);
-            mqttHandler.UnsubscribeAsync(topic);
+            await mqttHandler.UnsubscribeAsync(topic);
+        }
+
+        public async Task NewPublish(Publish publish)
+        {
+            await mqttHandler.NewPublish(publish);
         }
 
         public BindingList<Topic> Topics { get => topics; set => topics = value; }

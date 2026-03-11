@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsAppMQTTExplorer.Classes
 {
-    internal class Connection
+    public class Connection
     {
         private string name;
         private string broker;
